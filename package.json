@@ -4,6 +4,10 @@
     "type": "module",
     "main": "lib/index.js",
     "bin": "./lib/index.js",
+    "repository": {
+        "type": "git",
+        "url": "gitea@git.lumeweb.com:LumeWeb/publish-webapp.git"
+    },
     "devDependencies": {
         "@lumeweb/node-library-preset": "^0.2.7",
         "@types/mime": "^3.0.1",
@@ -24,5 +28,11 @@
         "msgpackr": "^1.9.7",
         "p-queue": "^7.3.4",
         "prompts": "^2.4.2"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
     }
 }
