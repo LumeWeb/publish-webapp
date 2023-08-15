@@ -18,7 +18,8 @@
     "_id": "@lumeweb/publish-webapp@0.1.0",
     "scripts": {
         "prepare": "presetter bootstrap",
-        "build": "run build"
+        "build": "run build",
+        "semantic-release": "semantic-release"
     },
     "dependencies": {
         "@lumeweb/libweb": "0.2.0-develop.31",
