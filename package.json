@@ -1,0 +1,28 @@
+{
+    "name": "@lumeweb/publish-webapp",
+    "version": "0.1.0",
+    "type": "module",
+    "main": "lib/index.js",
+    "bin": "./lib/index.js",
+    "devDependencies": {
+        "@lumeweb/node-library-preset": "^0.2.7",
+        "@types/mime": "^3.0.1",
+        "@types/prompts": "^2.4.4",
+        "presetter": "*"
+    },
+    "readme": "ERROR: No README data found!",
+    "_id": "@lumeweb/publish-webapp@0.1.0",
+    "scripts": {
+        "prepare": "presetter bootstrap",
+        "build": "run build"
+    },
+    "dependencies": {
+        "@lumeweb/libweb": "0.2.0-develop.31",
+        "array-from-async": "^3.0.0",
+        "chalk": "^5.3.0",
+        "mime": "^3.0.0",
+        "msgpackr": "^1.9.7",
+        "p-queue": "^7.3.4",
+        "prompts": "^2.4.2"
+    }
+}
