@@ -7,6 +7,7 @@ import {
   createNode,
   REGISTRY_TYPES,
   S5NodeConfig,
+  SignedRegistryEntry,
 } from "@lumeweb/libs5";
 import KeyPairEd25519 from "@lumeweb/libs5/lib/ed25519.js";
 import fs from "fs/promises";
@@ -20,6 +21,7 @@ import * as util from "util";
 import {
   CID,
   concatBytes,
+  equalBytes,
   hexToBytes,
   loginActivePortals,
   maybeInitDefaultPortals,
@@ -176,6 +178,7 @@ await peerDefer.promise;
 {
   const cidBytes = base58btc.decode(cid);
   const key = hdKey as HDKey;
+  let sre: SignedRegistryEntry;
 
   let revision = 0;
 
@@ -186,20 +189,27 @@ await peerDefer.promise;
   if (ret) {
     revision = ret.revision + 1;
   }
-  const sre = node.services.registry.signRegistryEntry({
-    kp: new KeyPairEd25519((hdKey as HDKey).privateKey),
-    data: concatBytes(
-      Uint8Array.from([
-        REGISTRY_TYPES.CID,
-        CID_TYPES.RESOLVER,
-        CID_HASH_TYPES.BLAKE3,
-      ]),
-      cidBytes,
-    ),
-    revision,
-  });
 
-  await node.services.registry.set(sre);
+  const newEntry = concatBytes(
+    Uint8Array.from([
+      REGISTRY_TYPES.CID,
+      CID_TYPES.RESOLVER,
+      CID_HASH_TYPES.BLAKE3,
+    ]),
+    cidBytes,
+  );
+
+  if (!equalBytes(ret?.data ?? new Uint8Array(), newEntry)) {
+    sre = node.services.registry.signRegistryEntry({
+      kp: new KeyPairEd25519((hdKey as HDKey).privateKey),
+      data: newEntry,
+      revision,
+    });
+
+    await node.services.registry.set(sre);
+  } else {
+    sre = ret as SignedRegistryEntry;
+  }
 
   console.log(
     util.format(
