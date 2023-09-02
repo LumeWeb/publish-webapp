@@ -1,4 +1,4 @@
-import { encodeCid } from "@lumeweb/libportal";
+import { decodeCid, encodeCid } from "@lumeweb/libportal";
 import {
   BOOTSTRAP_NODES,
   CID_HASH_TYPES,
@@ -18,6 +18,7 @@ import fromAsync from "array-from-async";
 import * as util from "util";
 
 import {
+  CID,
   concatBytes,
   hexToBytes,
   loginActivePortals,
@@ -124,11 +125,14 @@ processedFiles
 
 const serializedMetadata = pack(metadata);
 
-const [cid, err] = await uploadObject(serializedMetadata);
+let [cid, err] = await uploadObject(serializedMetadata);
 if (err) {
   console.error("Failed to publish: ", err);
   process.exit(1);
 }
+
+cid = decodeCid(cid) as CID;
+cid = encodeCid(cid.hash, cid.size, CID_TYPES.METADATA_WEBAPP);
 
 console.log(
   util.format("%s: %s", chalk.green("Web App successfully published"), cid),
