@@ -1,12 +1,12 @@
 {
     "name": "@lumeweb/publish-webapp",
-    "version": "0.1.0-develop.3",
+    "version": "0.1.0-develop.4",
     "lockfileVersion": 3,
     "requires": true,
     "packages": {
         "": {
             "name": "@lumeweb/publish-webapp",
-            "version": "0.1.0-develop.3",
+            "version": "0.1.0-develop.4",
             "dependencies": {
                 "@lumeweb/libweb": "0.2.0-develop.36",
                 "@scure/bip39": "^1.2.1",

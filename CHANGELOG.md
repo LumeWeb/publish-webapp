@@ -1,3 +1,10 @@
+# [0.1.0-develop.4](https://git.lumeweb.com/LumeWeb/publish-webapp/compare/v0.1.0-develop.3...v0.1.0-develop.4) (2023-09-02)
+
+
+### Bug Fixes
+
+* only submit a new registry entry if the data has changed ([421cf81](https://git.lumeweb.com/LumeWeb/publish-webapp/commit/421cf81f362455b607373097a4173eda5780f060))
+
 # [0.1.0-develop.3](https://git.lumeweb.com/LumeWeb/publish-webapp/compare/v0.1.0-develop.2...v0.1.0-develop.3) (2023-09-02)
 
 
