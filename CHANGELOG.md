@@ -1,3 +1,10 @@
+# [0.1.0-develop.3](https://git.lumeweb.com/LumeWeb/publish-webapp/compare/v0.1.0-develop.2...v0.1.0-develop.3) (2023-09-02)
+
+
+### Bug Fixes
+
+* need to use the sre.pk not cidBytes ([232669e](https://git.lumeweb.com/LumeWeb/publish-webapp/commit/232669e7760a975017748f14d52b8f9a5cb13689))
+
 # [0.1.0-develop.2](https://git.lumeweb.com/LumeWeb/publish-webapp/compare/v0.1.0-develop.1...v0.1.0-develop.2) (2023-09-02)
 
 
