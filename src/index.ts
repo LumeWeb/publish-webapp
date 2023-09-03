@@ -176,7 +176,7 @@ node.services.p2p.once("peerConnected", peerDefer.resolve);
 
 await peerDefer.promise;
 {
-  const cidBytes = base58btc.decode(cid);
+  const cidBytes = decodeCid(cid);
   const key = hdKey as HDKey;
   let sre: SignedRegistryEntry;
 
@@ -196,7 +196,7 @@ await peerDefer.promise;
       CID_TYPES.RESOLVER,
       CID_HASH_TYPES.BLAKE3,
     ]),
-    cidBytes,
+    cidBytes.hash,
   );
 
   if (!equalBytes(ret?.data ?? new Uint8Array(), newEntry)) {
